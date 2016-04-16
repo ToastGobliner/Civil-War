@@ -1,0 +1,21 @@
+EasyMenu Guide by Wolfrost (also the coder of EasyMenu :P)
+*****************************
+WARNING:
+If you're new into the Game Maker engine, you'll probably find difficult understanding completely how the EasyMenu system works, and this means that you can't edit it internally as you wish. I recommend watching the GM documentation dealing with ds_lists, accessors and strings to have a better feeling about what is going on in the code!
+*****************************
+HOW TO IMPLEMENT EASYMENU IN YOUR GAME
+If you're really new into Game Maker engine, probably you don't even know how to start implementing this package of scripts into your game properly. Don't worry, I'm here to explain this!
+First of all, you need to create an object completely dedicated to the menu, I'll call mine "obj_menu".
+Now we need to implement the scripts into each event. How? It's simple!
+Define a new Create Event for obj_menu, and write into that the script em_init with all the arguments it needs. This script is very important since it initialize all the system and his variables (those variables will be stored in this obj_menu). Once you've written all the arguments of the script (these are pretty simple to understand since it's all commented :P) you can add sections to your menu.
+For example, if I want to add a section "Play", I'll use the script em_add_section("Play",cmd_play).
+The second argument is the id of the script to execute when you "activate" that section. You only need to make some scripts for all your sections. For example, my script "cmd_play" will have the code "room_goto(rm_game);" so when I activate that section I'll jump into the game! There are no limits to this system, so unleash your creativity! Also if you want to make a better menu you only need to modify a bit the basic scripts of the system so they can deal with all your situations!
+Now that we have a functionally Create Event we need to add a Step Event, and write into that event the script em_step. It needs 3 arguments, which are the binds of the keys needed to go up, down, and activate a section. So for example I can write "em_step(keyboard_check_pressed(vk_up),keyboard_check_pressed(vk_down),keyboard_check_pressed(vk_enter))" so I can use the arrow keys to move in the menu and the enter key to activate a section of the menu. That's pretty simple no? Also if we want to add gamepad input we can add into the script logical expressions related to the gamepad, but that's pretty advanced :P (not that much)
+Now we have the 2 most important events completed. Now let's complete the implementing by add a Draw Event and a Destroy Event.
+In the Draw Event we write simply "em_draw()", it needs only to draw the menu on the screen.
+In the Destroy Event, we write "em_destroy()", it needs to clear the memory of the system once we've finished using it.
+Now we have our obj_menu complete, let's place it into the room dedicated to the main menu and see the system working!
+If (I hope not) something went wrong, control patiently all your events and if you've implemented the scripts properly, and if you know that is all right but it's not working message me at "wolfrostofficial@gmail.com" and explain there as better as possible what's your problem and when it happens. If there's some kind of bug or stuff like that I'll fix it asap!
+But before calling "bug" you need, as I said, to control that everything is working like the system wants to work. Also if you've modified the basic scripts I can't know what you've done, so if it's bugged because you didn't modified the system properly, that's not my fault, so I can't do nothing.
+I hope you enjoy my basic system (yes the code is pretty basic :P) and also remember to credit me (that's not required but I'd really like it) if you use my system!
+*****************************
